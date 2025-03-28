@@ -1,0 +1,115 @@
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #000;
+}
+
+/* Canvas de fondo */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Texto superior */
+.texto-superior {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 5vh;
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 0 10px rgba(57, 198, 214, 0.8);
+    animation: flotar 3s ease-in-out infinite alternate;
+}
+
+/* Botón mágico */
+.contenedor-boton {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-bottom: 8vh;
+}
+
+.boton-magico {
+    display: inline-block;
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #0a2be9 0%, #39c6d6 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 1.3rem;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 25px rgba(10, 43, 233, 0.5),
+                0 0 15px rgba(255, 255, 255, 0.3);
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.boton-magico:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(10, 43, 233, 0.7),
+                0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.boton-magico:active {
+    transform: translateY(2px);
+}
+
+.boton-magico::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    transform: rotate(30deg);
+    animation: brillo 3s infinite;
+}
+
+/* Animaciones */
+@keyframes flotar {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+@keyframes brillo {
+    0% { transform: rotate(30deg) translate(-30%, -30%); }
+    100% { transform: rotate(30deg) translate(30%, 30%); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .texto-superior {
+        font-size: 1.3rem;
+        padding-top: 7vh;
+    }
+    
+    .boton-magico {
+        padding: 12px 30px;
+        font-size: 1.1rem;
+    }
+}
